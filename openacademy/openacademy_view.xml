@@ -5,5 +5,13 @@
         <!-- menu Open Academy -->
         <menuitem id="menu_root" name="Open Academy"/>
 
+        <!-- menu Open Academy / Courses -->
+        <record id="action_course_list" model="ir.actions.act_window">
+            <field name="name">Courses</field>
+            <field name="res_model">openacademy.course</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_courses" parent="menu_root" action="action_course_list"/>
+
     </data>
 </openerp>
