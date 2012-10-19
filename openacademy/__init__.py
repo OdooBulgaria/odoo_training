@@ -1,3 +1,5 @@
 #
 # module openacademy
 #
+
+import openacademy
