@@ -3,7 +3,9 @@
     <data>
 
         <!-- menu Open Academy -->
-        <menuitem id="menu_root" name="Open Academy"/>
+        <menuitem id="menu_root" name="Open Academy"
+            web_icon="images/blackboard.png"
+            web_icon_hover="images/blackboard_hover.png"/>
 
         <!-- menu Open Academy / Courses -->
         <record id="action_course_list" model="ir.actions.act_window">
