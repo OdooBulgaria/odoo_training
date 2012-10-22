@@ -83,7 +83,7 @@
         <record id="action_session_list" model="ir.actions.act_window">
             <field name="name">Sessions</field>
             <field name="res_model">openacademy.session</field>
-            <field name="view_mode">tree,form,calendar,gantt</field>
+            <field name="view_mode">tree,form,calendar,gantt,graph</field>
         </record>
 
         <menuitem id="menu_sessions" parent="menu_root" action="action_session_list"/>
@@ -149,6 +149,18 @@
                         <field name="name" />
                     </level>
                 </gantt>
+            </field>
+        </record>
+
+        <record id="session_graph_view" model="ir.ui.view">
+            <field name="name">Session graph</field>
+            <field name="model">openacademy.session</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <graph string="Number of Attendees Graph" type="pie">
+                    <field name="percentage_filled"/>
+                    <field name="seats"/>
+                </graph>
             </field>
         </record>
 
