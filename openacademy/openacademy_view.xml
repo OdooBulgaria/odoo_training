@@ -83,7 +83,7 @@
         <record id="action_session_list" model="ir.actions.act_window">
             <field name="name">Sessions</field>
             <field name="res_model">openacademy.session</field>
-            <field name="view_mode">tree,form,calendar</field>
+            <field name="view_mode">tree,form,calendar,gantt</field>
         </record>
 
         <menuitem id="menu_sessions" parent="menu_root" action="action_session_list"/>
@@ -128,7 +128,7 @@
             </field>
         </record>
 
-        <record id="session_list_view" model="ir.ui.view">
+        <record id="session_calendar_view" model="ir.ui.view">
             <field name="name">Session Calendar</field>
             <field name="model">openacademy.session</field>
             <field name="type">calendar</field>
@@ -136,6 +136,19 @@
                 <calendar string="Sessions Calendar" date_start="startdate" date_delay="duration" color="name">
                     <field name="name" />
                 </calendar>
+            </field>
+        </record>
+
+        <record id="session_gantt_view" model="ir.ui.view">
+            <field name="name">Session Gantt</field>
+            <field name="model">openacademy.session</field>
+            <field name="type">gantt</field>
+            <field name="arch" type="xml">
+                <gantt string="Sessions Gantt" date_start="startdate" date_delay="duration" color="name">
+                    <level object="openacademy.session" link="instructor_id" domain="[]">
+                        <field name="name" />
+                    </level>
+                </gantt>
             </field>
         </record>
 
