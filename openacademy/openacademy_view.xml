@@ -6,10 +6,24 @@
         <menuitem id="menu_root" name="Open Academy" web_icon="images/blackboard.png" web_icon_hover="images/blackboard_hover.png" />
 
         <!-- Course -->
+        <record id="course_list_search" model="ir.ui.view">
+            <field name="name">course List</field>
+            <field name="model">openacademy.course</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search courses...">
+                    <filter name="responsible_id" domain="[('responsible_id','=',uid)]" string="Your Responsibility" />
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
         <record id="action_course_list" model="ir.actions.act_window">
             <field name="name">Courses</field>
             <field name="res_model">openacademy.course</field>
             <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="course_list_search" />
+            <field name="context">{'search_default_responsible_id': 1}</field>
         </record>
 
         <menuitem id="menu_courses" parent="menu_root" action="action_course_list"/>
