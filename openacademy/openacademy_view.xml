@@ -83,7 +83,7 @@
         <record id="action_session_list" model="ir.actions.act_window">
             <field name="name">Sessions</field>
             <field name="res_model">openacademy.session</field>
-            <field name="view_mode">tree,form,calendar,gantt,graph</field>
+            <field name="view_mode">tree,form,calendar,gantt,graph,kanban</field>
         </record>
 
         <menuitem id="menu_sessions" parent="menu_root" action="action_session_list"/>
@@ -164,5 +164,40 @@
             </field>
         </record>
 
+
+
+
+
+
+
+
+        <record model="ir.ui.view" id="session_kanban_view">
+            <field name="name">Session Kanban</field>
+            <field name="model">openacademy.session</field>
+            <field name="type">kanban</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="course_id">
+                    <field name="name"/>
+                    <field name="startdate"/>
+                    <field name="duration"/>
+                    <field name="percentage_filled"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_product_vignette">
+                                <div class="oe_product_desc">
+                                    <h4><a type="edit"><field name="name"></field></a></h4>
+                                    <ul>
+                                        <li><field name="name"/></li>
+                                        <li><field name="startdate"/></li>
+                                        <li><field name="duration"/></li>
+                                        <li><field name="percentage_filled"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
     </data>
 </openerp>
