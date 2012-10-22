@@ -3,3 +3,4 @@
 #
 
 import openacademy
+import partner

@@ -15,5 +15,7 @@
     'depends': ['base'],
     'data': [
         'openacademy_view.xml',
+	    'partner_view.xml',
+        'openacademy_data.xml'
     ],
 }
