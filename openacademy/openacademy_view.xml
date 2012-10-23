@@ -93,9 +93,9 @@
             <field name="model">openacademy.session</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="Sessions" colors="red:duration &lt; '5'; blue: duration &gt; 15;">
+                <tree string="Sessions" colors="red:duration&lt;5;blue:duration&gt;15;">
                     <field name="name" />
-                    <field name="duration" />
+                    <field name="duration" invisible="1" />
                     <field name="course_id" string="Related Course" />
                     <field name="percentage_filled" widget="progressbar" />
                 </tree>
