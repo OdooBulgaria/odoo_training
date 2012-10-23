@@ -4,6 +4,7 @@
 
 from osv import osv, fields
 import time
+from datetime import datetime, timedelta
 
 class Course(osv.Model):
     _name = 'openacademy.course'
@@ -55,9 +56,19 @@ class Session(osv.Model):
 	def _default_start_date(self, cr, uid, context):
 		return time.strftime('%Y-%m-%d')
 
+	def _calculate_stop_date(self, cr, uid, ids, name, args, context=None):
+		res = {}
+		for sess in self.browse(cr, uid, ids, context):
+			if sess.startdate and sess.duration > 0:
+				dt = datetime.strptime(sess.startdate, '%Y-%m-%d %H:%M:%S')
+				dt = dt + timedelta(days=sess.duration, minutes=-1)
+			res[sess.id] = dt.strftime('%Y-%m-%d %H:%M:%S')
+		return res
+
 	_columns = {
 		'name': fields.char('Name', size = 128, required = True),
 		"startdate" : fields.datetime("StartDate"),
+		"stopdate" : fields.function(_calculate_stop_date, type="datetime", string="Stop Date"),
 		"duration" : fields.float("Duration", digits = (5,1), help = "The duration of the session in days"),
 		"seats" : fields.integer("Seats"),
 		"percentage_filled" : fields.function(_calculate_percentage_filled, type="integer", string="Percentage Filled"),
