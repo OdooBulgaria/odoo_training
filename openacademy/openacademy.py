@@ -65,6 +65,24 @@ class Session(osv.Model):
 			res[sess.id] = dt.strftime('%Y-%m-%d %H:%M:%S')
 		return res
 
+	def state_next(self, cr, uid, ids, context):
+		res = {}
+		for session in self.browse(cr, uid, ids, context):
+			if(session.state == "draft"):
+				self.write(cr, uid, session.id, {"state" : "confirmed"})
+			elif(session.state == "confirmed"):
+				self.write(cr, uid, session.id, {"state" : "done"})
+			elif(session.state == "done"):
+				self.write(cr, uid, session.id, {"state" : "draft"})
+		return True
+
+	def state_previous(self, cr, uid, ids, context):
+		res = {}
+		for session in self.browse(cr, uid, ids, context):
+			if(session.state == "confirmed"):
+				self.write(cr, uid, session.id, {"state" : "draft"})
+		return True
+
 	_columns = {
 		'name': fields.char('Name', size = 128, required = True),
 		"startdate" : fields.datetime("StartDate"),
@@ -72,6 +90,14 @@ class Session(osv.Model):
 		"duration" : fields.float("Duration", digits = (5,1), help = "The duration of the session in days"),
 		"seats" : fields.integer("Seats"),
 		"percentage_filled" : fields.function(_calculate_percentage_filled, type="integer", string="Percentage Filled"),
+
+		"state" : fields.selection(
+			[
+				("draft", "Draft"),
+				("confirmed", "Confirmed"),
+				("done", "Done")
+			], 'Stage', required=True, readonly=True
+		),
 
 		"instructor_id" : fields.many2one("res.partner", string="Instructor", 
 			domain = ['|', ("is_instructor", '=', True), ("category_id", "child_of", "Teacher")]
@@ -82,7 +108,8 @@ class Session(osv.Model):
 	}
 
 	_defaults = {
-		"startdate" : _default_start_date
+		"startdate" : _default_start_date,
+		"state" : "draft"
 	}
 	
 class Attendee(osv.Model):

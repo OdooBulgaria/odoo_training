@@ -98,6 +98,7 @@
                     <field name="duration" invisible="1" />
                     <field name="course_id" string="Related Course" />
                     <field name="percentage_filled" widget="progressbar" />
+                    <field name="state" />
                 </tree>
             </field>
         </record>
@@ -110,6 +111,12 @@
                 <form string="Sessions">
                     <field name="name" />
                     <field name="course_id" string="Related Course" />
+                    <field name="state" />
+
+                    <group colspan="2" col="2">
+                        <button type="object" name="state_previous" string="Previous Stage" states="confirmed" />
+                        <button type="object" name="state_next" string="Next Stage" />
+                    </group>
 
                     <notebook colspan="4">
                         <page string="Details">
@@ -144,7 +151,7 @@
             <field name="model">openacademy.session</field>
             <field name="type">gantt</field>
             <field name="arch" type="xml">
-                <gantt string="Sessions Gantt" date_start="startdate" date_delay="duration" color="name">
+                <gantt string="Sessions Gantt" date_start="startdate" date_stop="stopdate" color="course_id">
                     <level object="openacademy.session" link="instructor_id" domain="[]">
                         <field name="name" />
                     </level>
