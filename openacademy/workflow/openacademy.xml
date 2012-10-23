@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <record id="workflow_session" model="workflow">
+            <field eval="1" name="on_create"/>
+            <field name="name">session workflow</field>
+            <field name="osv">openacademy.session</field>
+        </record>
+
+        <record id="workflow_activity_draft" model="workflow.activity">
+            <field name="kind">dummy</field>
+            <field name="name">draft</field>
+            <field name="join_mode">XOR</field>
+            <field name="wkf_id" ref="workflow_session"/>
+            <field eval="0" name="flow_stop"/>
+            <field name="split_mode">XOR</field>
+            <field eval="1" name="flow_start"/>
+        </record>
+        <record id="workflow_activity_confirmed" model="workflow.activity">
+            <field name="kind">function</field>
+            <field name="name">confirmed</field>
+            <field name="join_mode">XOR</field>
+            <field name="wkf_id" ref="workflow_session"/>
+            <field eval="0" name="flow_stop"/>
+            <field name="split_mode">XOR</field>
+            <field name="action">action_confirm()</field>
+            <field eval="0" name="flow_start"/>
+        </record>
+        <record id="workflow_activity_done" model="workflow.activity">
+            <field name="kind">function</field>
+            <field name="name">done</field>
+            <field name="join_mode">XOR</field>
+            <field name="wkf_id" ref="workflow_session"/>
+            <field eval="0" name="flow_stop"/>
+            <field name="split_mode">XOR</field>
+            <field name="action">action_done()</field>
+            <field eval="0" name="flow_start"/>
+        </record>
+        <record id="workflow_activity_reset" model="workflow.activity">
+            <field name="kind">function</field>
+            <field name="name">reset</field>
+            <field name="join_mode">XOR</field>
+            <field name="wkf_id" ref="workflow_session"/>
+            <field eval="0" name="flow_stop"/>
+            <field name="split_mode">XOR</field>
+            <field name="action">action_reset()</field>
+            <field eval="0" name="flow_start"/>
+        </record>
+
+        <record id="workflow_transition_draft_confirmed" model="workflow.transition">
+            <field name="signal">signal_confirm</field>
+            <field name="act_from" ref="workflow_activity_draft"/>
+            <field name="act_to" ref="workflow_activity_confirmed"/>
+            <field name="condition">True</field>
+        </record>
+        <record id="workflow_transition_confirmed_done" model="workflow.transition">
+            <field name="signal">signal_done</field>
+            <field name="act_from" ref="workflow_activity_confirmed"/>
+            <field name="act_to" ref="workflow_activity_done"/>
+            <field name="condition">True</field>
+        </record>
+        <record id="workflow_transition_confirmed_reset" model="workflow.transition">
+            <field name="signal">signal_reset</field>
+            <field name="act_from" ref="workflow_activity_confirmed"/>
+            <field name="act_to" ref="workflow_activity_reset"/>
+            <field name="condition">True</field>
+        </record>
+        <record id="workflow_transition_done_reset" model="workflow.transition">
+            <field name="signal">signal_reset</field>
+            <field name="act_from" ref="workflow_activity_done"/>
+            <field name="act_to" ref="workflow_activity_reset"/>
+            <field name="condition">True</field>
+        </record>
+        <record id="workflow_transition_reset_confirmed" model="workflow.transition">
+            <field name="signal">signal_confirm</field>
+            <field name="act_from" ref="workflow_activity_reset"/>
+            <field name="act_to" ref="workflow_activity_confirmed"/>
+            <field name="condition">True</field>
+        </record>
+        <record id="workflow_transition_draft_confirmed_auto" model="workflow.transition">
+            <field name="act_from" ref="workflow_activity_draft"/>
+            <field name="act_to" ref="workflow_activity_confirmed"/>
+            <field name="condition">_calculate_percentage_filled &gt;= 50</field>
+        </record>
+    </data>
+</openerp>

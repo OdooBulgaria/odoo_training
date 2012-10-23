@@ -16,6 +16,7 @@
     'data': [
         'openacademy_view.xml',
 	    'partner_view.xml',
-        'openacademy_data.xml'
+        'openacademy_data.xml',
+        'workflow/openacademy.xml'
     ],
 }

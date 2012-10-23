@@ -65,15 +65,15 @@ class Session(osv.Model):
 			res[sess.id] = dt.strftime('%Y-%m-%d %H:%M:%S')
 		return res
 
-	def action_draft(self, cr, uid, ids, context):
+	def action_reset(self, cr, uid, ids, context=None):
 		for session in self.browse(cr, uid, ids, context):
 			return self.write(cr, uid, session.id, {"state" : "draft"})
 
-	def action_confirmed(self, cr, uid, ids, context):
+	def action_confirm(self, cr, uid, ids, context=None):
 		for session in self.browse(cr, uid, ids, context):
 			return self.write(cr, uid, session.id, {"state" : "confirmed"})
 
-	def action_done(self, cr, uid, ids, context):
+	def action_done(self, cr, uid, ids, context=None):
 		for session in self.browse(cr, uid, ids, context):
 			return self.write(cr, uid, session.id, {"state" : "done"})
 
@@ -98,7 +98,7 @@ class Session(osv.Model):
 		),
 		"course_id" : fields.many2one("openacademy.course", required = True, string = "Related Course"),
 		"attendee_ids" : fields.one2many("openacademy.attendee", "session_id", string = "Attendees"),
-		"partner_id" : fields.many2one("res.partner", required = True)
+		"partner_id" : fields.many2one("res.partner")
 	}
 
 	_defaults = {

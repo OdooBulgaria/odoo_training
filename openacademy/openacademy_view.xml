@@ -114,9 +114,9 @@
                     <field name="state" />
 
                     <group colspan="2" col="3">
-                        <button type="object" name="action_confirmed" string="Confirm" states="draft" />
-                        <button type="object" name="action_done" string="Done" states="confirmed" />
-                        <button type="object" name="action_draft" string="Draft" states="confirmed,done" />
+                        <button type="workflow" name="signal_confirm" string="Mark As Confirmed" states="draft" />
+                        <button type="workflow" name="signal_done" string="Mark As Done" states="confirmed" />
+                        <button type="workflow" name="signal_reset" string="Reset Status" states="confirmed,done" />
                     </group>
 
                     <notebook colspan="4">
