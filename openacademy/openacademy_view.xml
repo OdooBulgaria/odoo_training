@@ -113,9 +113,10 @@
                     <field name="course_id" string="Related Course" />
                     <field name="state" />
 
-                    <group colspan="2" col="2">
-                        <button type="object" name="state_previous" string="Previous Stage" states="confirmed" />
-                        <button type="object" name="state_next" string="Next Stage" />
+                    <group colspan="2" col="3">
+                        <button type="object" name="action_confirmed" string="Confirm" states="draft" />
+                        <button type="object" name="action_done" string="Done" states="confirmed" />
+                        <button type="object" name="action_draft" string="Draft" states="confirmed,done" />
                     </group>
 
                     <notebook colspan="4">
@@ -172,12 +173,6 @@
         </record>
 
 
-
-
-
-
-
-
         <record model="ir.ui.view" id="session_kanban_view">
             <field name="name">Session Kanban</field>
             <field name="model">openacademy.session</field>
@@ -190,21 +185,26 @@
                     <field name="percentage_filled"/>
                     <templates>
                         <t t-name="kanban-box">
-                            <div class="oe_product_vignette">
-                                <div class="oe_product_desc">
-                                    <h4><a type="edit"><field name="name"></field></a></h4>
-                                    <ul>
-                                        <li><field name="name"/></li>
-                                        <li><field name="startdate"/></li>
-                                        <li><field name="duration"/></li>
-                                        <li><field name="percentage_filled"/></li>
-                                    </ul>
+                            <a type="edit">
+                                <div class="oe_product_vignette" style="background-color: yellow; border: solid 1px black">
+                                    <div class="oe_product_desc">
+                                        <h4><field name="name"></field></h4>
+                                        <ul>
+                                            <li>Name: <field name="name"/></li>
+                                            <li>Start Date: <field name="startdate"/></li>
+                                            <li>Duration: <field name="duration"/></li>
+                                            <li>Seats Filled: <field name="percentage_filled"/></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </t>
                     </templates>
                 </kanban>
             </field>
         </record>
+
+
+
     </data>
 </openerp>

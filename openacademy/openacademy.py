@@ -65,23 +65,17 @@ class Session(osv.Model):
 			res[sess.id] = dt.strftime('%Y-%m-%d %H:%M:%S')
 		return res
 
-	def state_next(self, cr, uid, ids, context):
-		res = {}
+	def action_draft(self, cr, uid, ids, context):
 		for session in self.browse(cr, uid, ids, context):
-			if(session.state == "draft"):
-				self.write(cr, uid, session.id, {"state" : "confirmed"})
-			elif(session.state == "confirmed"):
-				self.write(cr, uid, session.id, {"state" : "done"})
-			elif(session.state == "done"):
-				self.write(cr, uid, session.id, {"state" : "draft"})
-		return True
+			return self.write(cr, uid, session.id, {"state" : "draft"})
 
-	def state_previous(self, cr, uid, ids, context):
-		res = {}
+	def action_confirmed(self, cr, uid, ids, context):
 		for session in self.browse(cr, uid, ids, context):
-			if(session.state == "confirmed"):
-				self.write(cr, uid, session.id, {"state" : "draft"})
-		return True
+			return self.write(cr, uid, session.id, {"state" : "confirmed"})
+
+	def action_done(self, cr, uid, ids, context):
+		for session in self.browse(cr, uid, ids, context):
+			return self.write(cr, uid, session.id, {"state" : "done"})
 
 	_columns = {
 		'name': fields.char('Name', size = 128, required = True),
