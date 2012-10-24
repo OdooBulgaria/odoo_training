@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    	<record model="res.groups" id="openacademy_sesssion_read">
+			<field name="name">OpenAcademy / Session Read</field>
+    	</record>
+
+		<record model="res.groups" id="openacademy_manager">
+			<field name="name">Open Academy / Manager</field>
+    	</record>
+
+    </data>
+</openerp>

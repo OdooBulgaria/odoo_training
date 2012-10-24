@@ -1,0 +1,283 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* openacademy
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1-20121018-233116\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-24 09:40+0000\n"
+"PO-Revision-Date: 2012-10-24 09:40+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: openacademy
+#: sql_constraint:openacademy.course:0
+msgid "Course names must be unique"
+msgstr "Les noms de course droit être unique"
+
+#. module: openacademy
+#: selection:openacademy.session,state:0
+msgid "Confirmed"
+msgstr "Confirmé"
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Mark As Confirmed"
+msgstr "Marquer comme confirmé"
+
+#. module: openacademy
+#: view:openacademy.session:0
+#: field:openacademy.session,attendee_ids:0
+#: field:openacademy.wizard.subscribe,attendee_ids:0
+msgid "Attendees"
+msgstr "Participants"
+
+#. module: openacademy
+#: model:ir.ui.menu,name:openacademy.menu_root
+msgid "Open Academy"
+msgstr "Overt Académie"
+
+#. module: openacademy
+#: view:openacademy.course:0
+#: field:openacademy.course,responsible_id:0
+msgid "Responsible"
+msgstr "Responsable"
+
+#. module: openacademy
+#: view:openacademy.course:0
+msgid "Search courses..."
+msgstr "Cours de recherche"
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Number of Attendees Graph"
+msgstr "Nombre de participants graphe"
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Mark As Done"
+msgstr "Marque comme cela se fait"
+
+#. module: openacademy
+#: model:ir.model,name:openacademy.model_openacademy_createattendeewizard
+msgid "openacademy.createattendeewizard"
+msgstr "Créer assistant participant"
+
+#. module: openacademy
+#: selection:openacademy.session,state:0
+msgid "Draft"
+msgstr "Avant-projet"
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Details"
+msgstr "Détails"
+
+#. module: openacademy
+#: field:openacademy.session,stopdate:0
+msgid "Stop Date"
+msgstr "Arrêter la date"
+
+#. module: openacademy
+#: help:openacademy.session,duration:0
+msgid "The duration of the session in days"
+msgstr "La durée de la session en jours"
+
+#. module: openacademy
+#: view:openacademy.session:0
+#: field:openacademy.session,percentage_filled:0
+msgid "Percentage Filled"
+msgstr "Pourcentage rempli"
+
+#. module: openacademyz
+#: field:openacademy.session,startdate:0
+msgid "StartDate"
+msgstr "La date de début"
+
+#. module: openacademy
+#: model:ir.model,name:openacademy.model_openacademy_session
+msgid "openacademy.session"
+msgstr "Session"
+
+#. module: openacademy
+#: view:openacademy.course:0
+#: field:openacademy.course,description:0
+msgid "Description"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.actions.act_window,name:openacademy.action_session_list
+#: model:ir.ui.menu,name:openacademy.menu_sessions
+#: view:openacademy.course:0
+#: view:openacademy.session:0
+msgid "Sessions"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.model,name:openacademy.model_openacademy_wizard_attendee
+msgid "openacademy.wizard.attendee"
+msgstr "Participants"
+
+#. module: openacademy
+#: field:openacademy.attendee,session_id:0
+#: field:openacademy.session,partner_id:0
+#: field:openacademy.wizard.attendee,wizard_id:0
+msgid "unknown"
+msgstr "Inconnu"
+
+#. module: openacademy
+#: view:openacademy.session:0
+#: field:openacademy.session,course_id:0
+msgid "Related Course"
+msgstr "Cours connexe"
+
+#. module: openacademy
+#: view:openacademy.course:0
+msgid "Related Sessions"
+msgstr "Sessions connexes"
+
+#. module: openacademy
+#: view:openacademy.wizard.subscribe:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: openacademy
+#: field:res.partner,is_instructor:0
+msgid "Is Instructor"
+msgstr "Est Instructeur"
+
+#. module: openacademy
+#: view:openacademy.course:0
+msgid "Your Responsibility"
+msgstr "Votre Responsabilité"
+
+#. module: openacademy
+#: field:openacademy.course,active:0
+msgid "Active"
+msgstr "Actif"
+
+#. module: openacademy
+#: model:ir.model,name:openacademy.model_openacademy_attendee
+msgid "openacademy.attendee"
+msgstr "Participant"
+
+#. module: openacademy
+#: view:openacademy.session:0
+#: field:openacademy.session,instructor_id:0
+msgid "Instructor"
+msgstr "Instructeur"
+
+#. module: openacademy
+#: model:res.partner.category,name:openacademy.category_teacher
+msgid "Teacher"
+msgstr "Professeur"
+
+#. module: openacademy
+#: field:openacademy.session,state:0
+msgid "Stage"
+msgstr "étape"
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Reset Status"
+msgstr "Réinitialiser l'état"
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Sessions Gantt"
+msgstr "Gantt de Sessions"
+
+#. module: openacademy
+#: field:openacademy.attendee,name:0
+#: field:openacademy.course,name:0
+#: field:openacademy.session,name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: openacademy
+#: model:ir.actions.act_window,name:openacademy.action_subscribe
+#: model:ir.ui.menu,name:openacademy.menu_subscribe
+#: view:openacademy.wizard.subscribe:0
+msgid "Subscribe Attendees"
+msgstr "Souscrire Participants"
+
+#. module: openacademy
+#: model:ir.model,name:openacademy.model_openacademy_wizard_subscribe
+msgid "openacademy.wizard.subscribe"
+msgstr "Souscrire"
+
+#. module: openacademy
+#: model:ir.actions.act_window,name:openacademy.action_course_list
+#: model:ir.ui.menu,name:openacademy.menu_courses
+#: view:openacademy.course:0
+msgid "Courses"
+msgstr "Cours"
+
+#. module: openacademy
+#: model:res.groups,name:openacademy.openacademy_manager
+msgid "Open Academy / Manager"
+msgstr "Overt Académie / Manager"
+
+#. module: openacademy
+#: model:res.groups,name:openacademy.openacademy_sesssion_read
+msgid "OpenAcademy / Session Read"
+msgstr "Overt Académie / Session été lu"
+
+#. module: openacademy
+#: model:res.partner.category,name:openacademy.category_teacher_level_1
+msgid "Teacher Level 1"
+msgstr "Professeur Niveau 1"
+
+#. module: openacademy
+#: constraint:openacademy.course:0
+msgid "The course name and description must be different"
+msgstr "Le nom et description de cour droivent être différents"
+
+#. module: openacademy
+#: view:openacademy.wizard.subscribe:0
+msgid "Subscribe"
+msgstr "Souscrire"
+
+#. module: openacademy
+#: model:ir.model,name:openacademy.model_openacademy_course
+msgid "Course"
+msgstr "Cours"
+
+#. module: openacademy
+#: field:openacademy.course,session_ids:0
+#: field:openacademy.wizard.subscribe,session_id:0
+msgid "Session"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.session,state:0
+msgid "Done"
+msgstr "Fini"
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Sessions Calendar"
+msgstr "Calendrier des Séances"
+
+#. module: openacademy
+#: field:openacademy.session,seats:0
+msgid "Seats"
+msgstr "Sièges"
+
+#. module: openacademy
+#: field:openacademy.session,duration:0
+msgid "Duration"
+msgstr "Durée"
+
+#. module: openacademy
+#: model:ir.model,name:openacademy.model_res_partner
+#: field:openacademy.attendee,partner_id:0
+#: field:openacademy.wizard.attendee,partner_id:0
+msgid "Partner"
+msgstr "Partenaire"
+

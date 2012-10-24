@@ -203,8 +203,6 @@
                 </kanban>
             </field>
         </record>
-
-
-
+        
     </data>
 </openerp>
